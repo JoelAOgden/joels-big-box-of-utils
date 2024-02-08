@@ -146,3 +146,27 @@ func TestVectorBetweenPoints(t *testing.T) {
 	assert.InDelta(t, want[1], got[1], 0.00005)
 
 }
+
+func TestDirectionVectorBetweenPoints(t *testing.T) {
+
+	point1 := []float64{0, 0}
+	point2 := []float64{1, 1}
+	want := []float64{0.70710678118, 0.70710678118}
+
+	got, err := DirectionVectorBetweenPoints(point1, point2)
+
+	assert.NoError(t, err)
+	assert.InDelta(t, want[0], got[0], 0.00005)
+	assert.InDelta(t, want[1], got[1], 0.00005)
+
+	point1 = []float64{1, 0}
+	point2 = []float64{0, 1}
+	want = []float64{-0.70710678118, 0.70710678118}
+
+	got, err = DirectionVectorBetweenPoints(point1, point2)
+
+	assert.NoError(t, err)
+	assert.InDelta(t, want[0], got[0], 0.00005)
+	assert.InDelta(t, want[1], got[1], 0.00005)
+
+}
